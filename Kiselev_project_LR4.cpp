@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int side1, side2;
+
 
 bool UserInput(string input) {
     if (input.empty()) return false;
@@ -32,17 +32,19 @@ void enterNumber(int& varLink, string label) {
     varLink = stoi(str_input);
 }
 
-void enterSide1(){
-//разрабатывается Developer1 - ветка branch_fun_1
+void dr(int& x,int& y, int&z ){
+    //разрабатывается Developer2 - ветка branch_fun_2
 }
 
-void enterSide2(){
-//разрабатывается Developer2 - ветка branch_fun_2
+void okrugl(int& x, int& y, int& z){
+double sum = x + y + z;
+    int sumi = sum;
+    sum -= sumi;
+    if ((0 <= sum ) && (sum < 0.5)){cout << "Ближайшее целое число1: " << x + y + z - sum << endl;}
+    else if ((0.5 <= sum) && (sum < 1)){cout << "Ближайшее целое число2: " << x + y + z - sum + 1 << endl;}
 }
 
-void calcArea(){
-//разрабатывается Developer3 - ветка branch_fun_3
-}
+
 
 
 struct MenuItem {
@@ -50,12 +52,18 @@ struct MenuItem {
     function<void()> action;
 };
 
+
+
 int main() {
+    int x, y, z;
+    
     map<int, MenuItem> menu = {
-        {1, {"Ввод 1-й стороны прямоугольника", enterSide1}},
-        {2, {"Ввод 2-й стороны прямоугольника", enterSide2}},
-        {3, {"Calculate of Area", calcArea}},
-        {4, {"Calculate of Perimetr",}},
+        {1, {"Ввести x: ", [&](){ enterNumber(x, "Введите x: "); }}},
+        {2, {"Ввести y: ", [&](){ enterNumber(y, "Введите y: "); }}},
+        {3, {"Ввести z: ", [&](){ enterNumber(z, "Введите z: "); }}},
+        {4, {"Дробная часть: ", [&](){  }}},
+        {5, {"Округлить: ", [&](){ okrugl(x,y,z); }}},
+        {6, {"Выход: ", [](){ exit(0); }}}
     };
 
     int choice = 0;
@@ -81,3 +89,4 @@ int main() {
     }
     return 0;
 }
+    
